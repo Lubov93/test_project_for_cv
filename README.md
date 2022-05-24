@@ -96,7 +96,7 @@ To get a local copy up and running follow these simple example steps.
    http://127.0.0.1:8000/api/product/{id}/
    ```
 7. Using Postman add new images to one or more products
-![](https://github.com/Lubov93/)
+![](https://github.com/Lubov93/test_project_for_cv/images/img.png)
 
 <!-- CONTACT -->
 ## Contact

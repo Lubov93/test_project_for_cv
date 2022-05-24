@@ -10,3 +10,11 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Picture(models.Model):
+    image = models.ImageField(upload_to='images/%Y/%m', default='images/default.png', max_length=200)
+    product_of = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='Images', default=None)
+
+    def __str__(self):
+        return self.name

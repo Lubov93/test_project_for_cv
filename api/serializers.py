@@ -1,4 +1,4 @@
-from product.models import User, Product
+from product.models import User, Product, Picture
 from rest_framework import serializers
 
 
@@ -14,10 +14,15 @@ class UserSerializers(serializers.ModelSerializer):
         return user
 
 
-class ProductSerializer(serializers.ModelSerializer):
+class ProductSerializer(serializers.HyperlinkedModelSerializer):
+    images = serializers.SerializerMethodField()
+
     class Meta:
         model = Product
-        fields = ['id', 'name', 'price']
+        fields = ['id', 'name', 'price', 'images']
+
+    def get_images(self, product):
+        return PictureSerializer(product.Images.all(), many=True).data
 
     def create(self, validated_data):
         request = self.context.get('request')
@@ -25,3 +30,9 @@ class ProductSerializer(serializers.ModelSerializer):
         product = Product.objects.create(**validated_data)
         product.author = request.user
         return product
+
+
+class PictureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Picture
+        fields = '__all__'

@@ -33,7 +33,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-![](https://github.com/Lubov93/rest_api_blog/blob/master/blog/static/111.jpg)
+
 It is small test app, written on Django Rest Framework.
 
 <!-- GETTING STARTED -->

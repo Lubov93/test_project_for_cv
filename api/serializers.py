@@ -21,15 +21,16 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
         model = Product
         fields = ['id', 'name', 'price', 'images']
 
+    def create(self, validated_data):
+        images = self.context.get('view').request.FILES
+        product = Product.objects.create(**validated_data,
+                                         author_id=1)
+        for image_data in images.values():
+            Picture.objects.create(product_of_id=product.id, image=image_data)
+        return product
+
     def get_images(self, product):
         return PictureSerializer(product.Images.all(), many=True).data
-
-    def create(self, validated_data):
-        request = self.context.get('request')
-        validated_data.update({'author_id': request.user.id})
-        product = Product.objects.create(**validated_data)
-        product.author = request.user
-        return product
 
 
 class PictureSerializer(serializers.ModelSerializer):

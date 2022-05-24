@@ -97,7 +97,7 @@ To get a local copy up and running follow these simple example steps.
    ```
 7. Using Postman add new images to one or more products
 
-![](https://github.com/Lubov93/test_project_for_cv/images/img.png)
+![](https://raw.githubusercontent.com/Lubov93/test_project_for_cv/main/images/img.png)
 
 
 <!-- CONTACT -->
